@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Urbanist", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand: #003de1;
+  --color-brand-deep: #0030b4;
+  --color-lime: #d3fb25;
+  --color-lime-arc: #cafc06;
+  --color-ink: #0c0c1d;
+  --color-body: #55565c;
+  --color-muted: #8a8a90;
+  --color-surface: #f5f5f6;
+  --color-chip: #f2f2f3;
+  --color-line: #e4e5e8;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display;
+  }
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-brand;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+/* Blue hero/CTA canvas with the faint square grid from the design.
+   The cell scales with the viewport on desktop so grid lines sit under the artwork. */
+@utility bg-grid {
+  --cell: 64px;
+  background-color: var(--color-brand);
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.14) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.14) 1px, transparent 1px);
+  background-size: var(--cell) var(--cell);
+  background-position: 8.32vw 0;
+  @media (min-width: 48rem) {
+    --cell: 8.386vw;
+  }
+}
+
+/* Soft lime / lavender washes used behind the content sections */
+@utility wash-growth {
+  background:
+    radial-gradient(42% 46% at 24% 0%, rgb(211 251 37 / 0.34), transparent 72%),
+    radial-gradient(34% 46% at 0% 100%, rgb(139 166 240 / 0.34), transparent 72%),
+    radial-gradient(34% 40% at 100% 0%, rgb(178 196 244 / 0.3), transparent 72%),
+    #fafafa;
+}
+@utility wash-creator {
+  background:
+    radial-gradient(30% 40% at 0% 88%, rgb(211 251 37 / 0.4), transparent 72%),
+    radial-gradient(34% 44% at 100% 92%, rgb(139 166 240 / 0.34), transparent 72%),
+    radial-gradient(28% 34% at 0% 0%, rgb(178 196 244 / 0.3), transparent 72%),
+    #fafafa;
+}
+@utility wash-community {
+  background:
+    radial-gradient(36% 44% at 100% 6%, rgb(211 251 37 / 0.45), transparent 72%),
+    radial-gradient(34% 50% at 0% 92%, rgb(139 166 240 / 0.36), transparent 72%),
+    radial-gradient(30% 40% at 60% 0%, rgb(211 251 37 / 0.28), transparent 72%),
+    #fafafa;
+}
