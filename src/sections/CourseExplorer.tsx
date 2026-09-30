@@ -1,30 +1,21 @@
 import { useMemo, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { CourseCard } from '../components/cards/CourseCard'
 import { Chip } from '../components/ui/Chip'
 import { SectionHeading } from '../components/ui/SectionHeading'
 import { courseCategories, courses, FEATURED } from '../data/courses'
+import { routes } from '../lib/routes'
 
-interface CourseExplorerProps {
-  /** Free-text query coming from the hero search */
-  query: string
-  onClearQuery: () => void
-}
-
-export function CourseExplorer({ query, onClearQuery }: CourseExplorerProps) {
+export function CourseExplorer() {
   const [category, setCategory] = useState(FEATURED)
 
-  const visible = useMemo(() => {
-    const q = query.trim().toLowerCase()
-    if (q) {
-      return courses.filter((c) =>
-        [c.title, c.author, ...c.categories].some((field) => field.toLowerCase().includes(q)),
-      )
-    }
-    return category === FEATURED ? courses : courses.filter((c) => c.categories.includes(category))
-  }, [category, query])
+  const visible = useMemo(
+    () => (category === FEATURED ? courses : courses.filter((c) => c.categories.includes(category))),
+    [category],
+  )
 
   return (
-    <section id="courses" className="mx-auto w-full max-w-[1204px] scroll-mt-4 px-5 pt-16 md:pt-20">
+    <section id="courses" className="mx-auto w-full max-w-[1244px] scroll-mt-4 px-5 pt-16 md:pt-20">
       <SectionHeading
         title={
           <>
@@ -39,28 +30,16 @@ export function CourseExplorer({ query, onClearQuery }: CourseExplorerProps) {
         {courseCategories.map((name) => (
           <Chip
             key={name}
-            active={!query && name === category}
-            onClick={() => {
-              if (query) onClearQuery()
-              setCategory(name)
-            }}
+            active={name === category}
+            onClick={() => setCategory(name)}
           >
             {name}
           </Chip>
         ))}
-        <a href="#learning-paths" className="px-3 py-2.5 text-base text-brand hover:underline">
+        <Link to={routes.courses} className="px-3 py-2.5 text-base text-brand hover:underline">
           + More
-        </a>
+        </Link>
       </div>
-
-      {query && (
-        <p className="mt-8 text-center text-base text-body" role="status">
-          Showing results for “{query}”.{' '}
-          <button type="button" onClick={onClearQuery} className="text-brand underline">
-            Clear search
-          </button>
-        </p>
-      )}
 
       {visible.length > 0 ? (
         <div className="mt-12 grid gap-8 md:mt-20 md:grid-cols-2 lg:grid-cols-3 lg:gap-x-10 lg:gap-y-11">

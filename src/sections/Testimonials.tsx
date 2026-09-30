@@ -4,7 +4,7 @@ import { testimonials } from '../data/content'
 export function Testimonials() {
   return (
     <section className="wash-community">
-      <div className="mx-auto w-full max-w-[1204px] px-5 pt-16 pb-14 md:pt-[120px]">
+      <div className="mx-auto w-full max-w-[1244px] px-5 pt-16 pb-14 md:pt-[120px]">
         <div className="grid items-center gap-6 lg:grid-cols-2">
           <h2 className="text-4xl leading-[1.2] font-semibold text-black md:text-[48px]">
             Discover What Our <br className="hidden md:block" />
