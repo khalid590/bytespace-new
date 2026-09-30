@@ -3,7 +3,7 @@
 Landing page for **ByteSpace**, an online course marketplace, plus bonus **Login** and **Signup** pages.
 Built from the "ByteSpace New" Figma design.
 
-**Live site:** (https://bytespace-new-black.vercel.app/courses/digital-asset)
+**Live site:**(https://bytespace-new-black.vercel.app/)
 
 ## Tech stack
 
@@ -74,3 +74,5 @@ public/images/  photos, cut-outs and 3D shapes
   "ive into" typo is fixed; the rating breakdown draws 5 to 1 stars per row instead of five in every row; the "Products"
   count reflects the number of courses shown.
 - The newsletter button reads "Search" exactly as in the design frames.
+
+@khalid590
