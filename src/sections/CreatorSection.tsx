@@ -1,4 +1,4 @@
-import { Check } from 'lucide-react'
+import { CheckIcon } from '../components/ui/CheckIcon'
 import { CreatorArt } from '../components/art/CreatorArt'
 import { creatorBenefits } from '../data/content'
 
@@ -6,7 +6,7 @@ import { creatorBenefits } from '../data/content'
 export function CreatorSection() {
   return (
     <section id="creators" className="wash-creator scroll-mt-4">
-      <div className="mx-auto grid w-full max-w-[1204px] items-center gap-12 px-5 py-16 lg:min-h-[736px] lg:grid-cols-2 lg:gap-x-6 lg:py-0">
+      <div className="mx-auto grid w-full max-w-[1244px] items-center gap-12 px-5 py-16 lg:min-h-[736px] lg:grid-cols-2 lg:gap-x-6 lg:py-0">
         <div className="order-2 mx-auto w-full max-w-[549px] lg:order-1 lg:mx-0">
           <CreatorArt />
         </div>
@@ -22,9 +22,7 @@ export function CreatorSection() {
           <ul className="mt-10 space-y-[18px]">
             {creatorBenefits.map((benefit) => (
               <li key={benefit} className="flex items-center gap-3 text-lg text-ink md:text-xl">
-                <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-brand">
-                  <Check aria-hidden className="size-3.5 text-white" strokeWidth={3.2} />
-                </span>
+                <CheckIcon />
                 {benefit}
               </li>
             ))}

@@ -5,7 +5,7 @@ import { stats } from '../data/content'
 export function GrowthSection() {
   return (
     <section className="wash-growth">
-      <div className="mx-auto grid w-full max-w-[1204px] items-center gap-12 px-5 py-16 lg:min-h-[736px] lg:grid-cols-2 lg:gap-x-6 lg:py-0">
+      <div className="mx-auto grid w-full max-w-[1244px] items-center gap-12 px-5 py-16 lg:min-h-[736px] lg:grid-cols-2 lg:gap-x-6 lg:py-0">
         <div>
           <h2 className="max-w-[640px] text-4xl leading-[1.2] font-semibold text-ink/90 md:text-[48px]">
             Your Path to Professional Growth Starts Here!

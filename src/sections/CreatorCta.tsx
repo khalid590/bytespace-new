@@ -1,6 +1,7 @@
 import { Button } from '../components/ui/Button'
 import { ScaledStage } from '../components/ui/ScaledStage'
 import { Sprite } from '../components/ui/Sprite'
+import { routes } from '../lib/routes'
 
 const STAGE = { width: 1440, height: 490 }
 
@@ -35,7 +36,7 @@ export function CreatorCta() {
           become a part of a community comprising over 10,000 local and international creators. Utilize our Course
           Editor, and showcase your expertise by publishing your finest course on the ByteSpace Course Library.
         </p>
-        <Button to="/signup" className="mt-9 px-8">
+        <Button to={routes.register} className="mt-9 px-8">
           Join as Creator
         </Button>
       </div>

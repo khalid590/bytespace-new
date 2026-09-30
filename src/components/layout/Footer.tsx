@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from 'react'
+import { Link } from 'react-router-dom'
 import { footerColumns, legalLinks } from '../../data/content'
+import { isEmail } from '../../lib/validation'
 import { Button } from '../ui/Button'
 import { Logo } from '../ui/Logo'
 
@@ -9,7 +11,7 @@ function NewsletterForm() {
 
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault()
-    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    const valid = isEmail(email)
     setStatus(valid ? 'done' : 'error')
     if (valid) setEmail('')
   }
@@ -51,7 +53,7 @@ function NewsletterForm() {
 export function Footer() {
   return (
     <footer className="border-t border-line bg-white">
-      <div className="mx-auto w-full max-w-[1204px] px-5 pt-[70px]">
+      <div className="mx-auto w-full max-w-[1244px] px-5 pt-[70px]">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-x-6">
           <div>
             <Logo tone="dark" />
@@ -67,11 +69,11 @@ export function Footer() {
           <nav aria-label="Footer" className="grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 lg:pt-12">
             {footerColumns.map((column, i) => (
               <ul key={i} className="space-y-[18px]">
-                {column.map((label) => (
+                {column.map(({ label, to }) => (
                   <li key={label}>
-                    <a href="#home" className="text-[15px] text-body transition hover:text-brand">
+                    <Link to={to} className="text-[15px] text-body transition hover:text-brand">
                       {label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
