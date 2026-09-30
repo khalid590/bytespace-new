@@ -1,9 +1,10 @@
+import { DEFAULT_CREATOR_ID, routes } from '../lib/routes'
 import { Building2, Camera, Code, Laptop, Megaphone, PencilRuler, type LucideIcon } from 'lucide-react'
 
 export const navLinks = [
-  { label: 'Home', href: '/#home' },
-  { label: 'Courses', href: '/#courses' },
-  { label: 'Creators', href: '/#creators' },
+  { label: 'Home', to: routes.home, end: true },
+  { label: 'Courses', to: routes.courses, end: false },
+  { label: 'Creators', to: routes.creator(DEFAULT_CREATOR_ID), end: false },
 ]
 
 export interface LearningPath {
@@ -64,10 +65,29 @@ export const testimonials: Testimonial[] = [
   },
 ]
 
-export const footerColumns: string[][] = [
-  ['Featured Courses', 'Featured Categories', 'Business', 'IT', 'Design'],
-  ['Development', 'Marketing', 'Photography', 'Finance', 'Sport'],
-  ['Become a Creator', 'Affiliate Program', 'Contact', 'Help', 'About'],
+export interface FooterLink {
+  label: string
+  to: string
+}
+
+const topic = (label: string): FooterLink => ({ label, to: `${routes.courses}?q=${encodeURIComponent(label)}` })
+
+export const footerColumns: FooterLink[][] = [
+  [
+    { label: 'Featured Courses', to: routes.courses },
+    { label: 'Featured Categories', to: routes.courses },
+    topic('Business'),
+    topic('IT'),
+    topic('Design'),
+  ],
+  [topic('Development'), topic('Marketing'), topic('Photography'), topic('Finance'), topic('Sport')],
+  [
+    { label: 'Become a Creator', to: routes.register },
+    { label: 'Affiliate Program', to: routes.register },
+    { label: 'Contact', to: routes.home },
+    { label: 'Help', to: routes.home },
+    { label: 'About', to: routes.home },
+  ],
 ]
 
 export const legalLinks = ['Privacy Policy', 'Terms of Service', 'Cookies Settings']

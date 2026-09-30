@@ -1,12 +1,15 @@
+export type Level = 'Beginner' | 'Intermediate' | 'Advanced'
+
 export interface Course {
   id: string
   title: string
   author: string
+  authorId: string
   rating: number
   lessons: number
   duration: string
   comments: number
-  level: 'Beginner' | 'Intermediate' | 'Advanced'
+  level: Level
   price: number
   image: string
   categories: string[]
@@ -14,6 +17,7 @@ export interface Course {
 
 const shared = {
   author: 'purepearl studio',
+  authorId: 'purepearl-studio',
   rating: 4.5,
   lessons: 17,
   duration: '2 hours 16 mins',
@@ -69,6 +73,7 @@ export const courses: Course[] = [
 
 export const FEATURED = 'Featured'
 
+/** Chips shown on the landing page ("+ More" reveals the rest in the design) */
 export const courseCategories: string[] = [
   FEATURED,
   'Music',
@@ -89,3 +94,42 @@ export const courseCategories: string[] = [
   'Data Science',
   'Cooking',
 ]
+
+/** The shorter chip row used on the search and creator pages */
+export const searchCategories: string[] = [
+  FEATURED,
+  'Music',
+  'Drawing & Painting',
+  'Marketing',
+  'Animation',
+  'Social Media',
+  'UI/UX Design',
+  'Creative Marketing',
+  'Cooking',
+]
+
+/**
+ * 45-course demo catalogue for the search page (5 pages of 9).
+ * The first page mirrors the design exactly; later entries vary level, price
+ * and category so the filters have something to work with.
+ */
+const LEVELS: Level[] = ['Intermediate', 'Advanced', 'Beginner']
+const PRICES = [25, 19, 39, 29, 25]
+const RATINGS = [4.8, 4.5, 4.3, 4.7]
+const rotating = searchCategories.slice(1)
+
+export const catalog: Course[] = Array.from({ length: 45 }, (_, i) => {
+  const base = courses[i % courses.length]
+  if (i < 9) return base
+  return {
+    ...base,
+    level: LEVELS[i % LEVELS.length],
+    price: PRICES[i % PRICES.length],
+    rating: RATINGS[i % RATINGS.length],
+    categories: [...base.categories, rotating[i % rotating.length]],
+  }
+})
+
+export function findCourse(id: string | undefined): Course | undefined {
+  return courses.find((c) => c.id === id)
+}
