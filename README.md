@@ -3,7 +3,7 @@
 Landing page for **ByteSpace**, an online course marketplace, plus bonus **Login** and **Signup** pages.
 Built from the "ByteSpace New" Figma design.
 
-**Live site:** _add your Vercel URL here_
+**Live site:** (https://bytespace-new-black.vercel.app/courses/digital-asset)
 
 ## Tech stack
 
