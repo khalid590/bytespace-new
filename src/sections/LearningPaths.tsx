@@ -4,7 +4,7 @@ import { learningPaths } from '../data/content'
 
 export function LearningPaths() {
   return (
-    <section id="learning-paths" className="mx-auto w-full max-w-[1204px] scroll-mt-4 px-5 pt-16 pb-16 md:pt-20 md:pb-[120px]">
+    <section id="learning-paths" className="mx-auto w-full max-w-[1244px] scroll-mt-4 px-5 pt-16 pb-16 md:pt-20 md:pb-[120px]">
       <SectionHeading
         size="md"
         title="Explore Diverse Learning Paths at Bytespace"

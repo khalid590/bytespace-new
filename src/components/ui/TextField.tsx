@@ -22,14 +22,14 @@ export function TextField({ label, error, className, id, ...rest }: TextFieldPro
         aria-invalid={Boolean(error)}
         aria-describedby={error ? errorId : undefined}
         className={cn(
-          'h-[52px] w-full rounded-full border bg-white px-5 text-base text-ink outline-none transition placeholder:text-muted focus:border-brand',
-          error ? 'border-red-500' : 'border-[#c9cad0]',
+          'h-[51px] w-full rounded-[14px] border bg-[#fcfcfd] px-5 text-base text-ink outline-none transition placeholder:text-muted focus:border-brand',
+          error ? 'border-red-500' : 'border-[#e3e4e8]',
           className,
         )}
         {...rest}
       />
       {error && (
-        <p id={errorId} className="mt-1.5 px-2 text-sm text-red-600">
+        <p id={errorId} className="mt-1.5 text-sm text-red-600">
           {error}
         </p>
       )}

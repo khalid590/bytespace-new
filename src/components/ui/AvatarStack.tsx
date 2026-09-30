@@ -4,6 +4,8 @@ interface AvatarStackProps {
   /** "small" = 4 faces (course cards), "large" = 8 faces (Happy Students card) */
   variant: 'small' | 'large'
   count: string
+  /** Colour of the counter chip */
+  chip?: 'lime' | 'dark'
   className?: string
 }
 
@@ -13,14 +15,15 @@ const sources = {
 }
 
 /** Overlapping learner photos followed by a lime "+N" counter. */
-export function AvatarStack({ variant, count, className }: AvatarStackProps) {
+export function AvatarStack({ variant, count, chip = 'lime', className }: AvatarStackProps) {
   const s = sources[variant]
   return (
     <div className={cn('flex items-center', className)}>
       <img src={img(s.file)} alt="" width={s.width} height={s.height} className={cn('w-auto', s.imgClass)} />
       <span
         className={cn(
-          '-ml-1.5 inline-flex shrink-0 items-center justify-center rounded-full bg-lime font-medium text-ink',
+          '-ml-1.5 inline-flex shrink-0 items-center justify-center rounded-full font-medium',
+          chip === 'lime' ? 'bg-lime text-ink' : 'bg-ink text-white',
           s.chip,
         )}
       >

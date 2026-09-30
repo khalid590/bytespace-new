@@ -59,16 +59,17 @@ export function ProgressCard({ x, y, w, z, value = 55 }: PlacementProps & { valu
   )
 }
 
-export function HappyStudentsCard({ x, y, w, z }: PlacementProps) {
+export function HappyStudentsCard({ x, y, w, z, tone = 'white' }: PlacementProps & { tone?: 'white' | 'lime' }) {
+  const lime = tone === 'lime'
   return (
-    <Floating x={x} y={y} w={w} z={z} className="rounded-[14px] bg-white px-4 py-3.5">
+    <Floating x={x} y={y} w={w} z={z} className={cn('rounded-[14px] px-4 py-3.5', lime ? 'bg-lime' : 'bg-white')}>
       <p className="text-base leading-tight text-ink">Happy Students</p>
       <p className="mt-0.5 flex items-center gap-1 text-xs">
         <span className="font-semibold text-ink">4.5</span>
-        <span className="text-muted">(240)</span>
-        <Star aria-hidden className="size-3.5 fill-lime text-lime" />
+        <span className={lime ? 'text-ink/50' : 'text-muted'}>(240)</span>
+        <Star aria-hidden className={cn('size-3.5', lime ? 'fill-brand text-brand' : 'fill-lime text-lime')} />
       </p>
-      <AvatarStack variant="large" count="2K+" className="mt-2" />
+      <AvatarStack variant="large" count="2K+" chip={lime ? 'dark' : 'lime'} className="mt-2" />
     </Floating>
   )
 }
